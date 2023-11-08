@@ -5,6 +5,9 @@
 {%  endblock  %}
 
 {%  block content  %}
+
 Post content: <br>
-{{  post.content  }}
+{{  post.content  }}<br>
+<a href="{%  url 'update_post' post.id  %}">Update post</a><br>
+<a href="{%  url 'all_posts'  %}">All posts</a>
 {%  endblock  %}
