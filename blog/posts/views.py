@@ -16,11 +16,11 @@ def posts(request):
 
 
 def get_post(request, post_id):
-    post = cache.get(f'post-{post_id}')
+    post = cache.get(f"post-{post_id}")
     if not post:
         time.sleep(5)
         post = get_object_or_404(Post, id=post_id)
-        cache.set(f'post-{post_id}', post, 60 * 15)
+        cache.set(f"post-{post_id}", post, 60 * 15)
     data = {"post": post}
     return render(request, "posts/post.html", data)
 
@@ -30,10 +30,10 @@ def update_post(request, post_id):
 
     if request.method == "GET":
         form = PostForm(instance=post)
-        return render(request, "posts/update_post.html", {'form': form})
+        return render(request, "posts/update_post.html", {"form": form})
 
     form = PostForm(request.POST, instance=post)
     if form.is_valid():
         form.save()
-    cache.delete(f'post-{post_id}')
-    return redirect(reverse('post', args=[post_id]))
+    cache.delete(f"post-{post_id}")
+    return redirect(reverse("post", args=[post_id]))
