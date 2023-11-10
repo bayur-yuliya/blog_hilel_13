@@ -1,9 +1,13 @@
 {%  extends "posts/base.html"  %}
 
 {%  block title  %}
-{{  title  }}
+{{  post.title  }}
 {%  endblock  %}
 
 {%  block content  %}
-Post number - {{  post_id  }}
+
+Post content: <br>
+{{  post.content  }}<br>
+<a href="{%  url 'update_post' post.id  %}">Update post</a><br>
+<a href="{%  url 'all_posts'  %}">All posts</a>
 {%  endblock  %}

@@ -3,5 +3,11 @@
 {%  block title  %}Posts{%  endblock  %}
 
 {%  block content  %}
-
+{%  for post in posts  %}
+    {{  post.id  }}<br>
+    <a href="{%  url 'post' post.id %}">{{  post.title  }}</a><br>
+    {{  post.content  }}<br>
+    {{  post.updated_at  }}<br>
+    <hr>
+{%  endfor  %}
 {%  endblock  %}
